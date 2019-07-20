@@ -1,9 +1,11 @@
 import psycopg2 as pg
+#import db
 import psutil as ps
 import datetime as dt
 from time import sleep
-import db
 
+
+"""
 def data_xfer(host, database, user, password, query):
     # loop to log temperatures, every 30 seconds for 10 minutes
     for i in range(20):
@@ -19,7 +21,7 @@ def data_xfer(host, database, user, password, query):
         conn.commit()
         conn.close()
         sleep(30)
-
+"""
 def data_print():
     for i in range(20):
 
@@ -28,8 +30,7 @@ def data_print():
         values = [sensors.current, sensors.high, sensors.critical, time_stamp]
         for value in values:
             print(value)
-        print('-'*20,'\n')
+        print('-'*30,'\n')
 
-
-
+data_print()
 
