@@ -1,15 +1,20 @@
 ''' Test using the DS18B20 Probe '''
+''' use the following code to load the modules at boot time
+
+    sudo nano /etc/modules
+    
+    then add:
+    w1-gpio
+    w1-therm
+'''
 
 import os
-import glob
 import time
 
-os.system('modprob w1-gpio')
+os.system('modprob w1-gpio') 
 os.system('modprob w1-therm')
 
-base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0]
-device_file = device_folder + '/w1_slave'
+device_file = '/sys/bus/w1/devices/28-01143d3442aa/w1_slave'
 
 def read_temp_raw():
     with open(device_file,'r') as f:
