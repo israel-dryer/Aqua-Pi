@@ -62,10 +62,8 @@ class DS18B20:
         with open('log.csv','r', newline='\n') as f:
             reader = csv.reader(f)
             data = [tuple(row) for row in reader]
-                        
         try:
             self.db.insert(query, data)
-            # erase the file contents
             return True
         except:
             return False
@@ -89,6 +87,8 @@ def main():
             upload = s.log_sql()
             if upload:
                 print(f"{i} Data uploaded to SQL DB")
+                f = open('log.csv','w', newline='\n')
+                f.close()                
             else:
                 print(f"{i} SQL upload failed. Data stored in local CSV")
         else:
