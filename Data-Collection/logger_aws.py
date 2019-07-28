@@ -45,9 +45,9 @@ class Logger:
         
         for table, values in data.items():
             # calc the number of params to insert
-            cnt = len(values)
+            cnt = len(values[0])
             params = "%s" + ",%s"*(cnt-1)
-            cursor.execute(f"INSERT INTO {table} VALUES({params})", values)
+            cursor.executemany("INSERT INTO {0} VALUES({1})".format(table, params), values)
             conn.commit()
             
         conn.close()

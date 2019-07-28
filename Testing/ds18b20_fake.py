@@ -19,7 +19,7 @@ class Sensor:
         
         The load data method assumes that you want to upload the data into a database, so the data is return as a `dict`.
         '''
-        self.base_dir = r'/sys/bus/w1/devices/28*'
+        self.base_dir = r'/home/pi/Documents/Aqua-Pi/Testing/28*'
         self.sensor_path = []        
         self.sensor_name = []
         self.temps = []
@@ -99,7 +99,7 @@ class Sensor:
         ''' Nicely formatted data string '''
         print('-'*90)
         for d, t, n, c, f in self.rows:
-            print('Sensor: {0}  C={1:,.3f}  F={2:,.3f}  Date: {3}  Time: {4}'.format(n,c,f,d,t))
+            print(f'Sensor: {n}  C={c:,.3f}  F={f:,.3f}  Date: {d}  Time: {t}')
             
     def load_data(self, file='log.csv', name='SensorTemps'):
         '''
